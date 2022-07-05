@@ -1,4 +1,3 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -22,7 +21,7 @@ class HomePage extends StatelessWidget {
         children: [
           Stack(
             alignment: Alignment.bottomLeft,
-            children: [ 
+            children: [
               Image.network(
                 AppAssets.topBannerHomePageAsset,
                 fit: BoxFit.cover,
@@ -53,8 +52,11 @@ class HomePage extends StatelessWidget {
                     "Sale",
                     "Super Summer Sale",
                     "View All",
-                    () => Navigator.pushAndRemoveUntil(context,
-            MaterialPageRoute(builder: (context) => const ShopPage()), (r) => false)),
+                    () => Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const ShopPage()),
+                        (r) => false)),
                 const SizedBox(
                   height: 15,
                 ),
