@@ -20,7 +20,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
   List<Widget> _buildScreens() {
     return [
       const HomePage(),
-      const CategoriesPage(),
+      const ShopPage(),
       Container(),
       Container(),
       const ProfilePage(),

@@ -6,8 +6,8 @@ import 'category_page.dart';
  
  
 
-class CategoriesPage extends StatelessWidget {
-  const CategoriesPage({Key? key}) : super(key: key);
+class ShopPage extends StatelessWidget {
+  const ShopPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

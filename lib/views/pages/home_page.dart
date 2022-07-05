@@ -54,7 +54,7 @@ class HomePage extends StatelessWidget {
                     "Super Summer Sale",
                     "View All",
                     () => Navigator.pushAndRemoveUntil(context,
-            MaterialPageRoute(builder: (context) => const CategoriesPage()), (r) => false)),
+            MaterialPageRoute(builder: (context) => const ShopPage()), (r) => false)),
                 const SizedBox(
                   height: 15,
                 ),
