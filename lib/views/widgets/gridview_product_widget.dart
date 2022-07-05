@@ -14,7 +14,11 @@ class GridViewProductWidget extends StatelessWidget {
     final totalPrice = hasDiscount
         ? product.price
         : product.price - (product.price * product.discount / 100);
+   
 
+
+
+   
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: SizedBox(

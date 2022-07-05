@@ -14,6 +14,10 @@ class ListViewProductWidget extends StatelessWidget {
   final Product product;
   @override
   Widget build(BuildContext context) {
+
+
+
+    
     var size = MediaQuery.of(context).size;
     bool hasDiscount = product.discount > 0;
     final totalPrice = hasDiscount
