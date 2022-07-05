@@ -211,6 +211,7 @@ class _CategoryPageState extends State<CategoryPage> {
   }
 
   void _showFilterList(BuildContext context) {
+    //DISPLAY MODAL
     showModalBottomSheet(
         shape:const RoundedRectangleBorder(
           borderRadius:  BorderRadius.only(
@@ -257,6 +258,7 @@ class _CategoryPageState extends State<CategoryPage> {
         setState(() {
           filterType = value;
           filterTypeLabel = key;
+          //HIDE MODAL
           Navigator.pop(context);
         });
       },); 
