@@ -8,11 +8,11 @@ The main reason for this playlist is to simulate a part of the process we take w
 
 ## Feature Set ✨
 
-***Profile Page
+### Profile Page
 ![Screenshot_1657033902](https://user-images.githubusercontent.com/108058735/177362733-e7a3147d-0936-431b-9caa-5bc9dad29646.png)
-***Shop Page
+### Shop Page
 ![Screenshot_1657033897](https://user-images.githubusercontent.com/108058735/177362780-3579146b-3e72-4a0b-8f1e-31f5a17285c0.png)
-***Category Page
+### Category Page
  -list view
   ![Screenshot_1657034442](https://user-images.githubusercontent.com/108058735/177362969-a9a1ab2d-27b2-46e3-90ff-ab4ef5d29586.png)
  -gride view
