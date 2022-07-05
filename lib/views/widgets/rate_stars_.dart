@@ -14,6 +14,10 @@ class RateStars {
         ),
       );
     }
+
+
+
+    
     _starsView.add(Text('($rate_val)',style: const TextStyle(color: Colors.grey),));
     return Row(children: _starsView);
   }
