@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ecommerce/views/widgets/shared/custom_app_bar.dart';
 
 import 'package:provider/provider.dart';
 
@@ -8,6 +9,7 @@ import '../../models/product_model.dart';
 import '../widgets/dark_button.dart';
 import '../widgets/gridview_product_widget.dart';
 import '../widgets/listview_product_widget.dart';
+import '../widgets/shared/custom_app_bar.dart';
 
 class CategoryPage extends StatefulWidget {
   const CategoryPage({Key? key, required this.categoryObj}) : super(key: key);
@@ -21,7 +23,7 @@ class _CategoryPageState extends State<CategoryPage> {
   var viewType = ViewType.listView;
   FilterType filterType = FilterType.PriceLowestToHigh;
   String? filterTypeLabel = "Price Lowest To High";
-   @override
+  @override
   Widget build(BuildContext context) {
     List<Category?> subCategoriesList = [
       Category("0", "T-shirts", "imageUrl"),
@@ -32,24 +34,16 @@ class _CategoryPageState extends State<CategoryPage> {
     ];
     final database = Provider.of<Database>(context);
     return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        backgroundColor: Colors.white,
-        shadowColor: null,
-        foregroundColor: Colors.black,
-        bottom: _buildAppBarBottom(context, subCategoriesList),
-        title: Row(
-          children: [
-            InkWell(
-                child: const Icon(Icons.arrow_back_ios),
-                onTap: () => Navigator.of(context).pop()),
-            const Spacer(),
-            Text(widget.categoryObj.name),
-            const Spacer(),
-            const Icon(Icons.search)
-          ],
-        ),
-      ),
+      appBar: CustomAppBar(
+        title: widget.categoryObj.name,
+        hasBackNav: true,
+        backNavEvent: () => Navigator.of(context).pop(),
+        hasBottomContent: true,
+        bottomContent:  _buildAppBarBottom(context, subCategoriesList),
+        hasIcon: true,
+        icon: const Icon(Icons.search_outlined),
+        iconEvent: () {},
+      ).build(context),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -182,7 +176,7 @@ class _CategoryPageState extends State<CategoryPage> {
                           )
                         ],
                       ),
-                       Text(filterTypeLabel!),
+                      Text(filterTypeLabel!),
                     ],
                   ),
                 ),
@@ -213,8 +207,8 @@ class _CategoryPageState extends State<CategoryPage> {
   void _showFilterList(BuildContext context) {
     //DISPLAY MODAL
     showModalBottomSheet(
-        shape:const RoundedRectangleBorder(
-          borderRadius:  BorderRadius.only(
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
             topRight: Radius.circular(30),
             topLeft: Radius.circular(30),
           ),
@@ -224,7 +218,6 @@ class _CategoryPageState extends State<CategoryPage> {
           return Padding(
             padding: const EdgeInsets.all(20.0),
             child: SizedBox(
-              
               height: 270,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -232,13 +225,20 @@ class _CategoryPageState extends State<CategoryPage> {
                   Center(
                       child: Text(
                     'Sort By',
-                    style: Theme.of(context).textTheme.headline5?.copyWith(fontWeight: FontWeight.bold),
-                  )),const Spacer(),
-                  _buildFilterListItem(context,'Popular',FilterType.Popular),
-                  _buildFilterListItem(context,'Newest',FilterType.Newest),
-                  _buildFilterListItem(context,'Customers Review',FilterType.CustomerReview),
-                  _buildFilterListItem(context,'Price :Lowest to High',FilterType.PriceLowestToHigh),
-                  _buildFilterListItem(context,'Price :Highest to Low',FilterType.PriceHighestToLow),
+                    style: Theme.of(context)
+                        .textTheme
+                        .headline5
+                        ?.copyWith(fontWeight: FontWeight.bold),
+                  )),
+                  const Spacer(),
+                  _buildFilterListItem(context, 'Popular', FilterType.Popular),
+                  _buildFilterListItem(context, 'Newest', FilterType.Newest),
+                  _buildFilterListItem(
+                      context, 'Customers Review', FilterType.CustomerReview),
+                  _buildFilterListItem(context, 'Price :Lowest to High',
+                      FilterType.PriceLowestToHigh),
+                  _buildFilterListItem(context, 'Price :Highest to Low',
+                      FilterType.PriceHighestToLow),
                 ],
               ),
             ),
@@ -246,28 +246,37 @@ class _CategoryPageState extends State<CategoryPage> {
         });
   }
 
-  Widget _buildFilterListItem(BuildContext context,String key,FilterType value){
-      return InkWell(
-        child: Padding(
-          padding: const EdgeInsets.only(top:5.0),
-          child: SizedBox(
-            height: 40,
-            child: Text(key,style: Theme.of(context).textTheme.headline6?.copyWith(color: Colors.grey),),
+  Widget _buildFilterListItem(
+      BuildContext context, String key, FilterType value) {
+    return InkWell(
+      child: Padding(
+        padding: const EdgeInsets.only(top: 5.0),
+        child: SizedBox(
+          height: 40,
+          child: Text(
+            key,
+            style: Theme.of(context)
+                .textTheme
+                .headline6
+                ?.copyWith(color: Colors.grey),
           ),
-        ),onTap: (){
+        ),
+      ),
+      onTap: () {
         setState(() {
           filterType = value;
           filterTypeLabel = key;
           //HIDE MODAL
           Navigator.pop(context);
         });
-      },); 
+      },
+    );
   }
 }
 
 enum ViewType { gridView, listView }
 
-enum  FilterType {
+enum FilterType {
   Popular,
   Newest,
   CustomerReview,

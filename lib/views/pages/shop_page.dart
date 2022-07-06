@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ecommerce/views/widgets/shared/custom_app_bar.dart';
 
 import '../../models/category_model.dart';
 import '../../utilities/colors.dart';
 import 'category_page.dart';
- 
- 
 
 class ShopPage extends StatelessWidget {
   const ShopPage({Key? key}) : super(key: key);
@@ -17,44 +16,33 @@ class ShopPage extends StatelessWidget {
         //backgroundColor: Colors.white,
         // drawerScrimColor: primaryColor,
         // resizeToAvoidBottomInset :false,
-        appBar: AppBar(
-          automaticallyImplyLeading: false,
-          backgroundColor: Colors.white,
-          // surfaceTintColor: primaryColor,
-          shadowColor: null,
-          foregroundColor: Colors.black,
-
-          bottom: const TabBar(
-            labelColor: Colors.black,
-            indicatorColor: primaryColor,
-            indicatorWeight: 4.5,
-            tabs: [
-              Tab(
-                //icon: Icon(Icons.female),
-                text: 'Women',
-              ),
-              Tab(
-                // icon: Icon(Icons.male),
-                text: 'Men',
-              ),
-              Tab(
-                // icon: Icon(Icons.chi),
-                text: 'Kids',
-              ),
-            ],
-          ),
-          title: Row(
-            children: [
-              InkWell(
-                  child: const Icon(Icons.arrow_back_ios),
-                  onTap: () => Navigator.of(context).pop()),
-              const Spacer(),
-              const Text('Categories'),
-              const Spacer(),
-              const Icon(Icons.search)
-            ],
-          ),
-        ),
+        appBar: CustomAppBar(
+            title: 'Categories',
+            hasIcon: true,
+            icon: const Icon(Icons.search_outlined),
+            iconEvent: () {},
+            hasBackNav: true,
+            backNavEvent: () => Navigator.of(context).pop(),
+            hasBottomContent: true,
+            bottomContent: const TabBar(
+              labelColor: Colors.black,
+              indicatorColor: primaryColor,
+              indicatorWeight: 4.5,
+              tabs: [
+                Tab(
+                  //icon: Icon(Icons.female),
+                  text: 'Women',
+                ),
+                Tab(
+                  // icon: Icon(Icons.male),
+                  text: 'Men',
+                ),
+                Tab(
+                  // icon: Icon(Icons.chi),
+                  text: 'Kids',
+                ),
+              ],
+            )).build(context),
         body: TabBarView(
           children: [
             CustomTabBarView.build('Women', context),
@@ -176,7 +164,7 @@ class CategoryItemView {
                         fit: BoxFit.fill,
 
                         //  width: 120,
-                         height: double.infinity,
+                        height: double.infinity,
                         // color: Colors.grey.withOpacity(0.9),
                         colorBlendMode: BlendMode.modulate,
                       ),

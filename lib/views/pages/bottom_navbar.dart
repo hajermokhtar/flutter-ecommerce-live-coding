@@ -1,11 +1,15 @@
+ 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_ecommerce/utilities/colors.dart';
-import 'package:flutter_ecommerce/views/pages/home_page.dart';
-import 'package:flutter_ecommerce/views/pages/profile_page.dart';
+import 'package:flutter_ecommerce/views/pages/favorites_page.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
 
-import 'categories_page.dart';
+import '../../models/category_model.dart';
+import '../../utilities/colors.dart';
+import 'category_page.dart';
+import 'home_page.dart';
+import 'profile_page.dart';
+import 'shop_page.dart';
 
 class BottomNavBar extends StatefulWidget {
   const BottomNavBar({Key? key}) : super(key: key);
@@ -15,14 +19,14 @@ class BottomNavBar extends StatefulWidget {
 }
 
 class _BottomNavBarState extends State<BottomNavBar> {
-  final _bottomNavbarController = PersistentTabController();
+  final _bottomNavbarController = PersistentTabController(initialIndex: 0);
 
   List<Widget> _buildScreens() {
     return [
       const HomePage(),
       const ShopPage(),
       Container(),
-      Container(),
+      const FavoritesPage(),
       const ProfilePage(),
     ];
   }
@@ -67,6 +71,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
     return Scaffold(
       body: PersistentTabView(
         context,
+        
         controller: _bottomNavbarController,
         screens: _buildScreens(),
         items: _navBarsItems(),
