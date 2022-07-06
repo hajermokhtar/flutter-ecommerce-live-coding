@@ -19,7 +19,7 @@ class BottomNavBar extends StatefulWidget {
 }
 
 class _BottomNavBarState extends State<BottomNavBar> {
-  final _bottomNavbarController = PersistentTabController(initialIndex: 0);
+  final _bottomNavbarController = PersistentTabController(initialIndex: 3);
 
   List<Widget> _buildScreens() {
     return [

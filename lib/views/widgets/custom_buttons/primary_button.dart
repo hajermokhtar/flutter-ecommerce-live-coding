@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-import '../../utilities/colors.dart';
+import '../../../utilities/colors.dart';
 
-class DarkButton extends StatelessWidget {
+class PrimaryButton extends StatelessWidget {
   final String label_;
   //final Icon icon_;
   final VoidCallback onTapAction;
-  const DarkButton(
+  const PrimaryButton(
       {Key? key,
       required this.label_,
       //required this.icon_,
@@ -17,7 +17,7 @@ class DarkButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        primary: Colors.black,
+        primary: primaryColor,
       ),
       onPressed: onTapAction,
     //  icon: icon_,

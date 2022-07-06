@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ecommerce/views/widgets/fav_button.dart';
-import '../../utilities/colors.dart';
+import 'package:flutter_ecommerce/views/widgets/product_widgets/discount_span.dart';
+  import '../../../models/product_model.dart';
+import '../../../utilities/colors.dart';
+import 'fav_button.dart';
 import 'rate_stars_.dart';
 
-import '../../models/product_model.dart';
-
+ 
 class GridViewProductWidget extends StatelessWidget {
   const GridViewProductWidget({Key? key, required this.product})
       : super(key: key);
@@ -44,7 +45,7 @@ class GridViewProductWidget extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(height: 6.0),
-                      _generateCornerSpan(
+                      DiscountSpan.build(
                           context, hasDiscount, product.discount),
                     ],
                   ),
@@ -109,32 +110,5 @@ class GridViewProductWidget extends StatelessWidget {
     );
   }
 
-  static Widget _generateCornerSpan(
-      BuildContext context, bool hasDiscount, int? discountVal) {
-    final Color color_ = hasDiscount ? primaryColor : Colors.black;
-    final String text_ = hasDiscount ? '- $discountVal%' : 'new';
-    return Align(
-      alignment: Alignment.topLeft,
-      child: Padding(
-        padding: const EdgeInsets.all(10.0),
-        child: SizedBox(
-          height: 33,
-          width: 50,
-          child: DecoratedBox(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20.0),
-              color: color_,
-            ),
-            child: Center(
-              child: Text(text_,
-                  style: Theme.of(context).textTheme.labelMedium?.copyWith(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                      )),
-            ),
-          ),
-        ),
-      ),
-    );
-  }
+   
 }

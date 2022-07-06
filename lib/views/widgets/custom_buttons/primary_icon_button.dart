@@ -1,27 +1,27 @@
 import 'package:flutter/material.dart';
 
-import '../../utilities/colors.dart';
+import '../../../utilities/colors.dart';
 
-class PrimaryButton extends StatelessWidget {
+class PrimaryIconButton extends StatelessWidget {
   final String label_;
-  //final Icon icon_;
+  final Icon icon_;
   final VoidCallback onTapAction;
-  const PrimaryButton(
+  const PrimaryIconButton(
       {Key? key,
       required this.label_,
-      //required this.icon_,
+      required this.icon_,
       required this.onTapAction})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
+    return ElevatedButton.icon(
       style: ElevatedButton.styleFrom(
         primary: primaryColor,
       ),
       onPressed: onTapAction,
-    //  icon: icon_,
-      child: Text(
+      icon: icon_,
+      label: Text(
         label_,
         style: const TextStyle(
           color: Colors.white,

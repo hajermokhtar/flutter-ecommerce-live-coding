@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 import '../../controllers/database_controller.dart';
 import '../../models/product_model.dart';
 import '../../utilities/assets.dart';
-import '../widgets/gridview_product_widget.dart';
+ import '../widgets/product_widgets/gridview_product_widget.dart';
 import 'shop_page.dart';
  
 class HomePage extends StatelessWidget {

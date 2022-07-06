@@ -6,11 +6,11 @@ import 'package:provider/provider.dart';
 import '../../controllers/database_controller.dart';
 import '../../models/category_model.dart';
 import '../../models/product_model.dart';
-import '../widgets/dark_button.dart';
-import '../widgets/gridview_product_widget.dart';
-import '../widgets/listview_product_widget.dart';
-import '../widgets/shared/custom_app_bar.dart';
-
+import '../../utilities/enums.dart';
+import '../widgets/custom_buttons/dark_button.dart';
+   import '../widgets/product_widgets/gridview_product_widget.dart';
+import '../widgets/product_widgets/listview_product_widget.dart';
+ 
 class CategoryPage extends StatefulWidget {
   const CategoryPage({Key? key, required this.categoryObj}) : super(key: key);
   final Category categoryObj;
@@ -21,7 +21,7 @@ class CategoryPage extends StatefulWidget {
 
 class _CategoryPageState extends State<CategoryPage> {
   var viewType = ViewType.listView;
-  FilterType filterType = FilterType.PriceLowestToHigh;
+  FilterType filterType = FilterType.priceLowestToHigh;
   String? filterTypeLabel = "Price Lowest To High";
   @override
   Widget build(BuildContext context) {
@@ -138,10 +138,10 @@ class _CategoryPageState extends State<CategoryPage> {
   }
 
   Widget _buildFilterSortView(BuildContext context) {
-    final _width = MediaQuery.of(context).size.width;
+    final width = MediaQuery.of(context).size.width;
     return SizedBox(
       height: 45,
-      width: _width,
+      width: width,
       child: DecoratedBox(
         decoration: const BoxDecoration(color: Color.fromRGBO(0, 0, 0, 0.06)),
         child: Padding(
@@ -149,7 +149,7 @@ class _CategoryPageState extends State<CategoryPage> {
           child: Row(
             children: [
               SizedBox(
-                width: _width * 0.35,
+                width: width * 0.35,
                 child: InkWell(
                   child: Row(
                     children: const [
@@ -231,19 +231,20 @@ class _CategoryPageState extends State<CategoryPage> {
                         ?.copyWith(fontWeight: FontWeight.bold),
                   )),
                   const Spacer(),
-                  _buildFilterListItem(context, 'Popular', FilterType.Popular),
-                  _buildFilterListItem(context, 'Newest', FilterType.Newest),
+                  _buildFilterListItem(context, 'Popular', FilterType.popular),
+                  _buildFilterListItem(context, 'Newest', FilterType.newest),
                   _buildFilterListItem(
-                      context, 'Customers Review', FilterType.CustomerReview),
+                      context, 'Customers Review', FilterType.customerReview),
                   _buildFilterListItem(context, 'Price :Lowest to High',
-                      FilterType.PriceLowestToHigh),
+                      FilterType.priceLowestToHigh),
                   _buildFilterListItem(context, 'Price :Highest to Low',
-                      FilterType.PriceHighestToLow),
+                      FilterType.priceHighestToLow),
                 ],
               ),
             ),
           );
         });
+  
   }
 
   Widget _buildFilterListItem(
@@ -274,12 +275,3 @@ class _CategoryPageState extends State<CategoryPage> {
   }
 }
 
-enum ViewType { gridView, listView }
-
-enum FilterType {
-  Popular,
-  Newest,
-  CustomerReview,
-  PriceLowestToHigh,
-  PriceHighestToLow
-}

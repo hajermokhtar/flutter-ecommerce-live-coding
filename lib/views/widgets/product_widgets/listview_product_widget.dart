@@ -1,12 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_ecommerce/views/widgets/fav_button.dart';
-import '../../utilities/colors.dart';
+ import '../../../utilities/colors.dart';
+import 'fav_button.dart';
 import 'rate_stars_.dart';
 
-import '../../models/category_model.dart';
-import '../../models/product_model.dart';
-import '../pages/category_page.dart';
+import '../../../models/category_model.dart';
+import '../../../models/product_model.dart';
+import '../../pages/category_page.dart';
 
 class ListViewProductWidget extends StatelessWidget {
   const ListViewProductWidget({Key? key, required this.product})

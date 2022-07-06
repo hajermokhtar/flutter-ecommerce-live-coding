@@ -10,8 +10,8 @@ import '../../utilities/enums.dart';
 import '../../utilities/form_validator.dart';
 import '../../utilities/routes.dart';
 import '../../utilities/strings.dart';
-import '../widgets/primary_icon_button.dart';
-import '../widgets/white_image_button.dart';
+import '../widgets/custom_buttons/primary_icon_button.dart';
+import '../widgets/custom_buttons/white_image_button.dart';
 
 class AuthPage extends StatefulWidget {
   const AuthPage({Key? key}) : super(key: key);
